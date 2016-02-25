@@ -3,8 +3,8 @@
 block_cipher = None
 
 
-a = Analysis(['grep.py'],
-             pathex=['E:\\Ñî¶«³¬\\Imagex\\ss\\python'],
+a = Analysis(['src\\grep.py'],
+             pathex=['C:\\Users\\land\\Documents\\GitHub\\PullFreeSS'],
              binaries=None,
              datas=None,
              hiddenimports=[],

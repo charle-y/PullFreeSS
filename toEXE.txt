@@ -1,1 +1,1 @@
-pyinstaller grep.py -F
+pyinstaller src/grep.py -F
