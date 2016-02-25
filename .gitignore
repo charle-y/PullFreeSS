@@ -1,0 +1,4 @@
+#set ingore list
+build/
+dist/
+grep.spec
