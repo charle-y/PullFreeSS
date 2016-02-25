@@ -11,5 +11,8 @@ for i in range(5):
 #b=re.findall(".*密码:(.*)</.*",content)
 #print(content)
 print(b,len(b))
+#转置b
+bb=[[r[col] for r in b] for col in range(len(b[0]))]
+print(bb,len(bb))
 SS='  {\r\n"server" : "%s",\r\n"server_port" : %s,\r\n"password" : "%s",\r\n"method" : "%s",\r\n"remarks" : "%s"}\r\n'
-print(SS%('111','222','333','444','555'))
+print(SS%tuple(bb[1]))
