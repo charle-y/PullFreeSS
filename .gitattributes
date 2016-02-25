@@ -16,6 +16,6 @@
 *.rtf	 diff=astextplain
 *.RTF	 diff=astextplain
 
-#忽略的文件及文件夹
+#set ingore list
 build/
 dist/
