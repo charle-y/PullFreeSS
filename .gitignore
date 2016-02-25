@@ -2,3 +2,5 @@
 build/
 dist/
 grep.spec
+__pycache__/
+gui-config.json

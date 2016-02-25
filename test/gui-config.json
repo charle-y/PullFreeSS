@@ -3,14 +3,21 @@
   {
 "server" : "us1.iss.tf",
 "server_port" : 443,
-"password" : "74906277",
+"password" : "82198855",
 "method" : "aes-256-cfb",
 "remarks" : "正常"}
 ,
   {
-"server" : "hk2.iss.tf",
+"server" : "nl2.iss.tf",
 "server_port" : 8989,
-"password" : "46634879",
+"password" : "7122149929",
+"method" : "aes-256-cfb",
+"remarks" : "正常"}
+,
+  {
+"server" : "jp3.iss.tf",
+"server_port" : 443,
+"password" : "33024964",
 "method" : "aes-256-cfb",
 "remarks" : "正常"}
 ,
