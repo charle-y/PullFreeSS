@@ -1,7 +1,6 @@
 #! /usr/bin/python3.5
 #version 0.1
 import codecs #, os, sys
-from GetPage import GetPage
 
 from ishadowsocks import ishadowsocks
 
@@ -18,8 +17,7 @@ Dresses = ['{\r\n"configs" : [\r\n','],\r\n"strategy" : null,\r\n"index" : 2,\r\
 "availabilityStatistics" : false}\r\n']
 SS=['  {\r\n"server" : "','",\r\n"server_port" : ',',\r\n"password" : "','",\r\n"method" : "','",\r\n"remarks" : "','"}\r\n']
 
-url='http://www.ishadowsocks.com/'
-happy = ishadowsocks(the_page=GetPage(url).get(),SS=SS)
+happy = ishadowsocks(SS=SS)
 Servers=happy.get()
 
 OUTfile=Dresses[0]+Servers

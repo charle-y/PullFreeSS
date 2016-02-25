@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
-
+from GetPage import GetPage
 
 class ishadowsocks:
     
-    def __init__(self, the_page,SS):
-        self.the_page=the_page
+    def __init__(self, SS):
         self.SS=SS
     def get(self):
-        content = self.the_page.decode("utf8")
+        content = GetPage('http://www.ishadowsocks.com/').get().decode("utf8")
         Servers=""
         initA=0
         strABC=[["A","","A","",""],["B","","B","",""],["C","","C","",""]]
