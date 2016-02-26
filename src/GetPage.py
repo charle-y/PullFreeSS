@@ -15,7 +15,7 @@ class GetPage:
         }
         
         req = urllib.request.Request(self.url,headers=user_agent)
-        response = urllib.request.urlopen(req,timeout = 5)
+        response = urllib.request.urlopen(req,timeout = 10)
         the_page = response.read()
         response.close()
         

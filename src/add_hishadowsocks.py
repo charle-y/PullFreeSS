@@ -16,7 +16,7 @@ class hishadowsocks:
             b[i]="".join(re.findall(".*"+keyStr[i]+"</.*",content))
         b[4] = 'unknown'
         #print(b)
-        Servers = self.SS%tuple(b)
+        Servers = self.SS%tuple(b)+",\r\n"
         return Servers
 
 

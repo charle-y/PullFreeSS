@@ -3,7 +3,7 @@
   {
 "server" : "us1.iss.tf",
 "server_port" : 443,
-"password" : "82198855",
+"password" : "02137217",
 "method" : "aes-256-cfb",
 "remarks" : "正常"}
 ,
@@ -17,9 +17,16 @@
   {
 "server" : "jp3.iss.tf",
 "server_port" : 443,
-"password" : "33024964",
+"password" : "95988379",
 "method" : "aes-256-cfb",
 "remarks" : "正常"}
+,
+  {
+"server" : "free.hishadowsocks.com",
+"server_port" : 10000,
+"password" : "701578",
+"method" : "aes-256-cfb",
+"remarks" : "unknown"}
 ,
 ],
 "strategy" : null,

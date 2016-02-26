@@ -2,7 +2,9 @@
 #version 0.1
 import codecs #, os, sys
 
-from ishadowsocks import ishadowsocks
+from add_ishadowsocks import ishadowsocks
+from add_hishadowsocks import hishadowsocks
+from add_vultr import vultr
 
 try:
   ori_file = codecs.open("gui-config.json", 'r',"utf-8")
@@ -17,8 +19,24 @@ Dresses = ['{\r\n"configs" : [\r\n','],\r\n"strategy" : null,\r\n"index" : 2,\r\
 "availabilityStatistics" : false}\r\n']
 SS=['  {\r\n"server" : "','",\r\n"server_port" : ',',\r\n"password" : "','",\r\n"method" : "','",\r\n"remarks" : "','"}\r\n']
 
-happy = ishadowsocks(SS=SS)
-Servers=happy.get()
+Servers=""
+try:
+  happy = ishadowsocks(SS=SS)
+  Servers+=happy.get()
+except:
+  print("ishadowsocks is down!")
+
+try:
+  happy = hishadowsocks(SS=SS)
+  Servers+=happy.get()
+except:
+  print("hishadowsocks is down!")
+
+try:
+  happy = vultr(SS=SS)
+  Servers+=happy.get()
+except:
+  print("vultr is down!")
 
 OUTfile=Dresses[0]+Servers
 if len(Dress1)<10:
