@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import urllib.request, urllib.parse, urllib.error, urllib.request, urllib.error, urllib.parse, http.cookiejar, re, hashlib, time, json
+import urllib.request, urllib.parse, urllib.error, http.cookiejar, re, hashlib, time, json
 
 class Utils:
     @staticmethod
@@ -84,30 +84,7 @@ class AutoBBS:
         else:
             print("something is wrong",msg1)
             return 0
-            
-    def reply(self, fid, tid, msg):
-        headers = {'User-Agent': self.__userAgent}
-        params = {'mod': 'post', 'action': 'reply',
-                  'replysubmit': 'yes', 'infloat': 'yes',
-                  'handlekey': 'fastpost', 'inajax': '1',
-                  'fid': fid, 'tid': tid}
-        url = self.domain.urlWithParams('forum.php', params)
-        data = {'message': msg, 'posttime': Utils.getTime(),
-                'usesig': '0', 'subject': '', 'formhash': self.__formhash}
-        res = self.__post(url, headers, data)
-        if res[3].find('成功') != -1:
-            print('Reply OK!')
-        else :
-            print('Reply failed!')
-    def new(self, fid, subject, message):
-        headers = {'User-Agent': self.__userAgent}
-        params = {'mod': 'post', 'action': 'newthread', 'topicsubmit': 'yes', 'fid': fid}
-        url = self.domain.urlWithParams('forum.php', params)
-        data = {'formhash': self.__formhash, 'posttime': Utils.getTime(),
-                'wysiwyg': '1', 'typeid': '323', 'subject': subject,
-                'message': message, 'allownoticeauthor': '0', 'usesig': '1'}
-        res = self.__post(url, headers, data)
- 
+
     def getAccount(self):
         headers = {'User-Agent': self.__userAgent}
         url = self.domain.urlWithParams('/user/node', {})
@@ -125,12 +102,3 @@ class AutoBBS:
             ss+=servers[nl][0][:-1]+',"remarks" : "'+info_nodes[nl]+'"},\r\n'
         #print(ss)
         return ss
-        
-        
-    
-'''
-from Domain import Domain
-domain = Domain(hostname = 'bbs.uestc.edu.cn')
-autobbs = AutoBBS(domain = domain, userName = '', passWord = '')
-autobbs.login()
-'''

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import argparse, getpass, sys
+import argparse, getpass, sys, logging
 from .Domain import Domain
 from .AutoBBS import AutoBBS
 
@@ -47,8 +47,8 @@ class shadowsockscn:
             logging.error("You must supply username and password to log-in")
             exit(ExitCode.MISSING_CREDENTIALS)
 
-        userName = args.username
-        passWord = args.password
+        userName = args.username #fill username here
+        passWord = args.password #and the password here
         autobbs = AutoBBS(domain = domain, userName=userName, passWord=passWord)
         st = autobbs.login()
         if st[1] and args.auto_checkin:
