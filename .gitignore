@@ -1,6 +1,7 @@
 #set ingore list
 build/
 dist/
+test/
 grep.spec
 __pycache__/
 gui-config.json
