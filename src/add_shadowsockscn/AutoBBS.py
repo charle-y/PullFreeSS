@@ -1,21 +1,10 @@
 # -*- coding: utf-8 -*-
 
-import urllib.request, urllib.parse, urllib.error, http.cookiejar, re, hashlib, time, json
-
-class Utils:
-    @staticmethod
-    def getMD5Of(src):
-        m = hashlib.md5()
-        m.update(src)
-        #print(m.hexdigest())
-        return m.hexdigest()
-    @staticmethod
-    def getTime():
-        return int(time.time())
+import urllib.request, urllib.parse, urllib.error, http.cookiejar, re, time, json
 
 class AutoBBS:
     __userAgent = 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.103 Safari/537.36'
-
+    left_dataVolume=''
     def __init__(self, domain, userName, passWord, proxyHandler = {}):
         self.domain = domain
         self.__userName = userName
@@ -51,18 +40,20 @@ class AutoBBS:
         if res[3].find('节点列表') != -1:
             print('Login OK!')
             is_login = 1
+            self.left_dataVolume = re.findall("剩余流量：(.*?)<",res[3])[0]
+            last_time = re.findall("<p>上次签到时间：<code>(.*)?</code></p>",res[3])[0]
+            ts = time.time()-time.mktime(time.strptime(last_time,'%Y-%m-%d %H:%M:%S'))
+            #print(ts)
+            need_time=(240-int(ts/60/6))/10
+            if need_time<0:
+                print("需要签到，距离上次签到",24-need_time,"小时")
+                need_check = 1
+            else:
+                print("不需要签到，还有",need_time,"小时才可以签到")
+                need_check = 0
         else :
             print('Login failed!')
             is_login = 0
-        last_time = re.findall("<p>上次签到时间：<code>(.*)?</code></p>",res[3])[0]
-        ts = time.time()-time.mktime(time.strptime(last_time,'%Y-%m-%d %H:%M:%S'))
-        #print(ts)
-        need_time=(240-int(ts/60/6))/10
-        if need_time<0:
-            print("需要签到，距离上次签到",24-need_time,"小时")
-            need_check = 1
-        else:
-            print("不需要签到，还有",need_time,"小时才可以签到")
             need_check = 0
         return is_login, need_check
         
@@ -84,7 +75,7 @@ class AutoBBS:
         else:
             print("something is wrong",msg1)
             return 0
-
+            
     def getAccount(self):
         headers = {'User-Agent': self.__userAgent}
         url = self.domain.urlWithParams('/user/node', {})
@@ -99,6 +90,6 @@ class AutoBBS:
             url = self.domain.urlWithParams('/user'+node_list[nl], {})
             res = self.__get(url, headers)
             servers[nl] = re.findall('{.*}',res[3])
-            ss+=servers[nl][0][:-1]+',"remarks" : "'+info_nodes[nl]+'"},\r\n'
+            ss+=servers[nl][0][:-1]+',"remarks" : "'+info_nodes[nl]+self.left_dataVolume+'"},\r\n'
         #print(ss)
         return ss
