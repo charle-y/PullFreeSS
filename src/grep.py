@@ -39,11 +39,6 @@ try:
 except:
   print("vultr is down!")
   
-try:
-  happy = add_shadowsockscn.shadowsockscn(SS=SS)
-  Servers+=happy.get()
-except:
-  print("shadowsockscn is down!")
 
 OUTfile=Dresses[0]+Servers
 if len(Dress1)<10:
