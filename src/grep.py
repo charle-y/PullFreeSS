@@ -5,7 +5,6 @@ import codecs #, os, sys
 from add_ishadowsocks import ishadowsocks
 from add_hishadowsocks import hishadowsocks
 from add_vultr import vultr
-from add_shadowsockscn import add_shadowsockscn
 
 try:
   ori_file = codecs.open("gui-config.json", 'r',"utf-8")
@@ -15,9 +14,11 @@ try:
 except:
   Dress1=""
 
-Dresses = ['{\r\n"configs" : [\r\n','],\r\n"strategy" : null,\r\n"index" : 2,\r\n"global" : false,\r\n"enabled" : false,\
-\r\n"shareOverLan" : false,\r\n"isDefault" : false,\r\n"localPort" : 8087,\r\n"pacUrl" : null,\r\n"useOnlinePac" : false,\
-"availabilityStatistics" : false}\r\n']
+Dresses = ['{\r\n"configs" : [\r\n','],\r\n  "strategy": null,\r\n  "index": 0,\r\n  "global": false,\
+  \r\n  "enabled": false,\r\n  "shareOverLan": false,\r\n  "isDefault": false,\r\n  "localPort": 8087,\
+  \r\n  "pacUrl": null,\r\n  "useOnlinePac": false,\r\n  "availabilityStatistics": false,\
+  \r\n  "autoCheckUpdate": true,\r\n  "isVerboseLogging": false,\r\n  "logViewer": null,\
+  \r\n  "useProxy": false,\r\n  "proxyServer": null,\r\n  "proxyPort": 0\r\n}']
 SS=['  {\r\n"server" : "','",\r\n"server_port" : ',',\r\n"password" : "','",\r\n"method" : "','",\r\n"remarks" : "','"}\r\n']
 
 Servers=""
