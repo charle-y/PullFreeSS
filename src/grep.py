@@ -4,7 +4,6 @@ import codecs #, os, sys
 
 from add_ishadowsocks import ishadowsocks
 from add_hishadowsocks import hishadowsocks
-from add_vultr import vultr
 
 try:
   ori_file = codecs.open("gui-config.json", 'r',"utf-8")
@@ -33,13 +32,6 @@ try:
   Servers+=happy.get()
 except:
   print("hishadowsocks is down!")
-
-try:
-  happy = vultr(SS=SS)
-  Servers+=happy.get()
-except:
-  print("vultr is down!")
-  
 
 OUTfile=Dresses[0]+Servers
 if len(Dress1)<10:
