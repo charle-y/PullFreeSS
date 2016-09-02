@@ -13,4 +13,7 @@ class vultr:
         Servers = "".join(b).replace("<br />","")+",\r\n"
         return Servers
 
-
+if __name__=="__main__":
+    SS=['  {\r\n"server" : "','",\r\n"server_port" : ',',\r\n"password" : "','",\r\n"method" : "','",\r\n"remarks" : "','"}\r\n']
+    happy = vultr(SS=SS)
+    print(happy.get());

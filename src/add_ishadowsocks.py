@@ -34,5 +34,8 @@ class ishadowsocks:
             if isOn==1:
                     Servers+=tempServer
         return Servers
-
+if __name__=="__main__":
+    SS=['  {\r\n"server" : "','",\r\n"server_port" : ',',\r\n"password" : "','",\r\n"method" : "','",\r\n"remarks" : "','"}\r\n']
+    happy = ishadowsocks(SS=SS)
+    print(happy.get());
 
