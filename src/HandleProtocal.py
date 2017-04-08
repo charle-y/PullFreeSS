@@ -2,6 +2,7 @@
 import re
 from GetPage import GetPage
 import json
+from collections import OrderedDict
 
 class ishadowsocks:
     url = 'http://isx.yt/';
@@ -35,9 +36,9 @@ class ishadowsocks:
         content = GetPage(self.url).get().decode("utf8")
         b=[""]*5        
         for i in range(5):
-            b[i]=re.findall(".*"+self.keyStr[i]+".*",content)
+            b[i]=re.findall(self.keyStr[i],content)
         for j in range(len(b[0])):
-            server_dict = {};
+            server_dict = OrderedDict();
             for i in range(5):
                server_dict[self.SS[i]] = b[i][j];
             #print(server_dict)
@@ -69,7 +70,7 @@ class ishadowsocks:
         j1 = {}
         j1["config"] = jj
         with open("re.ini", "w") as s:
-            json.dump( j1, s, indent = 4)
+            json.dump( j1, s, indent = 2)
             
 if __name__=="__main__":
     SS=["server", "server_port", "password", "method", "remarks", "auth", "timeout"]
