@@ -34,15 +34,20 @@ class ishadowsocks:
     def htmlWork(self):
         Servers = [];
         content = GetPage(self.url).get().decode("utf8")
-        b=[""]*5        
+        b=[""]*5;
+        serverValidFlag = True;
         for i in range(5):
             b[i]=re.findall(self.keyStr[i],content)
         for j in range(len(b[0])):
             server_dict = OrderedDict();
+            serverValidFlag = True;
             for i in range(5):
-               server_dict[self.SS[i]] = b[i][j];
+                if (b[i][j] == ''):
+                    serverValidFlag = False;
+                server_dict[self.SS[i]] = b[i][j];
             #print(server_dict)
-            Servers.append(server_dict);
+            if serverValidFlag:
+                Servers.append(server_dict);
         #print(Servers)
         #b[4] = 'unknown'
         #print(Servers)
